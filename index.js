@@ -43,7 +43,8 @@ const paletas = [
   app.get('/paletas/find-paleta/:id', (req, res) => {
     const idParam = Number(req.params.id);
     const chosenPaleta = paletas.find((paleta) => paleta.id === idParam);
-    res.send(chosenPaleta);
+    const verificador= idParam==undefined
+    res.send(verificador? "Paleta não encontrada" : chosenPaleta);
   });
 
 app.listen(port, () => {
