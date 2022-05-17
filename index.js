@@ -36,7 +36,10 @@ const paletas = [
 
 /* Get all */
 app.get("/paletas/find-paletas", (req, res) => {
-  res.send(paletas);
+  const verificador = paletas == "";
+  verificador
+    ? res.status(404).send({ mensagem: "Sem Paletas cadastradas" })
+    : res.send(paletas);
 });
 
 /* Get by id */
